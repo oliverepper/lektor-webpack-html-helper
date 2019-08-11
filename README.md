@@ -1,7 +1,7 @@
 # lektor-webpack-html-helper
 
-This is a plugin for Lektor that adds support for generating templates with webpacks HtmlWebpackPlugin. These templates can be generated into the assets folder which will be observed for newly created or modified html files.
-These files will then be copied over to Lektors template folder so that they can be used by Lektor.
+This is a plugin for Lektor that adds support for generating templates with webpacks HtmlWebpackPlugin. These templates can be generated into Lektors assets folder which will be observed for newly created or modified html files.
+These files will then be copied over to Lektors templates folder so that they can be used by Lektor.
 This plugin depends on the [lektor-webpack-support](https://github.com/lektor/lektor-webpack-support) plugin to be really useful.
 
 # webpack/webpack.config.js
