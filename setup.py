@@ -17,7 +17,7 @@ setup(
     author='Oliver Epper',
     author_email='oliver.epper@gmail.com',
     description=description,
-    keywords='Lektor plugin',
+    keywords='Lektor plugin webpack html-webpack-plugin',
     license='MIT',
     long_description=readme,
     long_description_content_type='text/markdown',
