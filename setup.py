@@ -34,5 +34,6 @@ setup(
         'lektor.plugins': [
             'webpack-html-helper = lektor_webpack_html_helper:WebpackHtmlHelperPlugin',
         ]
-    }
+    },
+    install_requires=['watchdog']
 )
