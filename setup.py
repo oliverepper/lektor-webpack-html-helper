@@ -24,7 +24,7 @@ setup(
     name='lektor-webpack-html-helper',
     packages=find_packages(),
     py_modules=['lektor_webpack_html_helper'],
-    # url='[link to your repository]',
+    url='https://github.com/oliverepper/lektor-webpack-html-helper',
     version='0.1',
     classifiers=[
         'Framework :: Lektor',
