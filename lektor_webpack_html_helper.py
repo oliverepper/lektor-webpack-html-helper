@@ -23,7 +23,8 @@ class HtmlHandler(PatternMatchingEventHandler):
         self.on_modified(event)
 
     def on_deleted(self, event):
-        os.remove(self.target + self.filename)
+        if os.path.exists(self.target + self.filename):
+            os.remove(self.target + self.filename)
 
 
 class WebpackHtmlHelperPlugin(Plugin):
@@ -32,6 +33,12 @@ class WebpackHtmlHelperPlugin(Plugin):
 
     def __init__(self, *args, **kwargs):
         Plugin.__init__(self, *args, **kwargs)
+        print("")
+        print("")
+        print("Initializing Plugin")
+        print(f"Observing: {self.env.root_path + '/assets/'}")
+        print("")
+        print("")
         self.observer = Observer()
         self.handler = HtmlHandler(target=self.env.root_path + "/templates/")
 
