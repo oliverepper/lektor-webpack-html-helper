@@ -33,12 +33,6 @@ class WebpackHtmlHelperPlugin(Plugin):
 
     def __init__(self, *args, **kwargs):
         Plugin.__init__(self, *args, **kwargs)
-        print("")
-        print("")
-        print("Initializing Plugin")
-        print(f"Observing: {self.env.root_path + '/assets/'}")
-        print("")
-        print("")
         self.observer = Observer()
         self.handler = HtmlHandler(target=self.env.root_path + "/templates/")
 
