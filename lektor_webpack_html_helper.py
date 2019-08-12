@@ -28,8 +28,8 @@ class HtmlHandler(PatternMatchingEventHandler):
 
 class WebpackHtmlHelperPlugin(Plugin):
     name = "lektor-webpack-html-helper"
-    description = u"Observes the assets directory for html files and copies them \
-        into the templates folder."
+    description = u"Observes the assets directory for html files and copies " \
+        "them into the templates folder."
 
     def __init__(self, *args, **kwargs):
         Plugin.__init__(self, *args, **kwargs)
