@@ -27,19 +27,19 @@ class HtmlHandler(PatternMatchingEventHandler):
 
 
 class WebpackHtmlHelperPlugin(Plugin):
-    name = 'lektor-webpack-html-helper'
-    description = u'Observes the assets directory for html files and copies them into the templates folder.'
+    name = "lektor-webpack-html-helper"
+    description = u"Observes the assets directory for html files and copies them \
+        into the templates folder."
 
     def __init__(self, *args, **kwargs):
         Plugin.__init__(self, *args, **kwargs)
         self.observer = Observer()
-        self.handler = HtmlHandler(target=self.env.root_path + '/templates/')
+        self.handler = HtmlHandler(target=self.env.root_path + "/templates/")
 
     def on_server_spawn(self, **extra):
         self.observer.schedule(
-            self.handler,
-            self.env.root_path + '/assets/',
-            recursive=True)
+            self.handler, self.env.root_path + "/assets/", recursive=True
+        )
         self.observer.start()
 
     def on_server_stop(self, **extra):
