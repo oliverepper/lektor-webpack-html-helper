@@ -5,7 +5,7 @@ import shutil
 from lektor.pluginsystem import Plugin
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
-from lektor.reporter import reporter
+from lektor.reporter import CliReporter
 
 
 class HtmlHandler(PatternMatchingEventHandler):
@@ -35,10 +35,16 @@ class WebpackHtmlHelperPlugin(Plugin):
 
     def __init__(self, *args, **kwargs):
         Plugin.__init__(self, *args, **kwargs)
+        src_dir = self.env.root_path + '/' + (self.get_config().get('src_dir') or 'assets') + '/'
+        target_dir = self.env.root_path + '/' + (self.get_config().get('target_dir') or 'templates') + '/'
+        
         self.observer = Observer()
-        self.handler = HtmlHandler(target=self.env.root_path + "/templates/")
-
+        self.handler = HtmlHandler(target=target_dir)
         self.observer.schedule(
-            self.handler, self.env.root_path + "/assets/", recursive=True
+            self.handler, src_dir, recursive=True
         )
+        
+        cli_reporter = CliReporter(self.env)
+        cli_reporter.report_generic(f'Starting webpack-html helper: {src_dir} -> {target_dir}')
+
         self.observer.start()
