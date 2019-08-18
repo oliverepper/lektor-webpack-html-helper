@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-from lektor.pluginsystem import Plugin
-from watchdog.observers import Observer
-from watchdog.events import PatternMatchingEventHandler
 import os
 import shutil
+
+from lektor.pluginsystem import Plugin
+from watchdog.events import PatternMatchingEventHandler
+from watchdog.observers import Observer
+from lektor.reporter import reporter
 
 
 class HtmlHandler(PatternMatchingEventHandler):
@@ -36,12 +38,7 @@ class WebpackHtmlHelperPlugin(Plugin):
         self.observer = Observer()
         self.handler = HtmlHandler(target=self.env.root_path + "/templates/")
 
-    def on_server_spawn(self, **extra):
         self.observer.schedule(
             self.handler, self.env.root_path + "/assets/", recursive=True
         )
         self.observer.start()
-
-    def on_server_stop(self, **extra):
-        self.observer.stop()
-        self.observer.join()
