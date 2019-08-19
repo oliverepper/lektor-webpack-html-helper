@@ -1,4 +1,6 @@
 # lektor-webpack-html-helper
+[![PyPI version](https://badge.fury.io/py/lektor-webpack-html-helper.svg)](https://badge.fury.io/py/lektor-webpack-html-helper)
+[![Downloads](https://pepy.tech/badge/lektor-webpack-html-helper)](https://pepy.tech/project/lektor-webpack-html-helper)
 
 This is a plugin for Lektor that adds support for generating templates with webpacks HtmlWebpackPlugin. These templates can be generated into Lektors assets folder which will be observed for newly created or modified html files.
 These files will then be copied over to Lektors templates folder so that they can be used by Lektor.
@@ -78,3 +80,10 @@ module.exports = {
 
 </html>
 ```
+
+You can configure the following options via `configs/webpack-html-helper.ini`
+
+|parameter  |default value      |description                                                |
+|-----------|-------------------|-----------------------------------------------------------|
+|src_dir    |<root>/assets      |The folder that gets recursively observed by the watchdog. |
+|target_dir |<root>/templates/  |Lektors template folder.                                   |
